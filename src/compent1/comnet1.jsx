@@ -1,10 +1,11 @@
 import React , { useState } from "react";
+/* import "./App.css" */
 
 function MyConter(porp){
     let [MyConter , setCont] = useState(porp.initial);
-
+    let go = MyConter !== porp.max
     function plus(){
-        if(MyConter !== porp.max){
+        if(go){
             MyConter += porp.steps
             setCont(MyConter);
         }
@@ -13,7 +14,7 @@ function MyConter(porp){
         }
     }
     function min(){
-        if(MyConter !== porp.max){
+        if(go){
             MyConter -= porp.steps
             setCont(MyConter);
         }
@@ -23,11 +24,11 @@ function MyConter(porp){
     }
      return(
         <div>
-            <button onClick={plus}><i class="bi bi-plus"></i></button>
+          {go?<button onClick={plus}  ><i class="bi bi-plus"></i></button>:  <button onClick={plus}  className="displyClass" ><i class="bi bi-plus"></i></button>}  
             <h1 >
                 {MyConter}
             </h1>
-            <button onClick={min}><i class="bi bi-dash-circle"></i></button>
+          {go?<button onClick={min}><i class="bi bi-dash-circle"></i></button>: <button onClick={min} className="displyClass"><i class="bi bi-dash-circle"></i></button>}  
 
         </div>        
     )
