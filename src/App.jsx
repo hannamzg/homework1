@@ -1,12 +1,22 @@
+
 import MyConter from './compent1/comnet1'; 
+import Main from './MainIndex/main';
+import Domap from './MainIndex/domap';
+import { useState } from "react";
+
 import './App.css';
 
 function App() {
-  let min = Number.MIN_SAFE_INTEGER;
-  let max = Number.MAX_SAFE_INTEGER;
+  
+  const [coco, setConterr] = useState([]);
   return (
     <div className="App">
-      <MyConter min={min}  max={max} initial={0} steps ={1}  />
+     {/*  <MyConter  initial={0} steps ={1} max={20} min={-20} /> */}
+       <Main onSubmit={(counter)=>{
+          setConterr((old) => [...old, counter]);
+       }}
+       />    
+      <Domap coco={coco} />
     </div>
     )
   
